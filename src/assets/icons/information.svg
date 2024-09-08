@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-13fdca2a-6e91-413e-aece-ba7c1b2e1aa7" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path d="m16,6.68c5.14,0,9.32,4.18,9.32,9.32s-4.18,9.32-9.32,9.32-9.32-4.18-9.32-9.32,4.18-9.32,9.32-9.32m0-3c-6.81,0-12.32,5.52-12.32,12.32s5.52,12.32,12.32,12.32,12.32-5.52,12.32-12.32S22.81,3.68,16,3.68h0Z" style="fill: #c9caca; stroke-width: 0px;"/>
+  <g>
+    <circle cx="16" cy="12.11" r="1.5" style="fill: #c9caca; stroke-width: 0px;"/>
+    <path d="m16,22.89c-.83,0-1.5-.67-1.5-1.5v-5.1c0-.83.67-1.5,1.5-1.5s1.5.67,1.5,1.5v5.1c0,.83-.67,1.5-1.5,1.5Z" style="fill: #c9caca; stroke-width: 0px;"/>
+  </g>
+</svg>

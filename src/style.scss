@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .columns {
+    @apply xl:max-w-[1439.98px] lg:max-w-[1199.98px] md:max-w-[991.98px] sm:max-w-[767.98px] xs:max-w-[575.98px];
+    @apply grid grid-cols-12 gap-6;
+    @apply sm:grid-cols-8;
+    @apply xs:grid-cols-4;
+  }
+}
+
+@layer components {}
+
+@layer utilities {}
+
+:root {
+  @apply tracking-wider;
+
+  font-family: "Noto Sans TC", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light dark;
+  color: var(--info);
+
+  /* font-style */
+  /* font-size: clamp(.83vw, 16px, 48px); */
+  /* font-size: clamp(calc(8px + 0.390625vw), 14px, 20px); */
+  font-size: 16px;
+  /* Header */
+  --h1-size: 2.125rem;
+  --h1-line-height: 2.625rem;
+  --h2-size: 1.875rem;
+  --h2-line-height: 2.375rem;
+  --h3-size: 1.5rem;
+  --h3-line-height: 2rem;
+  --h4-size: 1.25rem;
+  --h4-line-height: 1.75rem;
+  /* Body */
+  --b1-size: 1.125rem;
+  --b1-line-height: 1.75rem;
+  --b2-size: 1rem;
+  --b2-line-height: 1.5rem;
+  --b3-size: 0.875rem;
+  --b3-line-height: 1.25rem;
+  --b4-size: 0.75rem;
+  --b4-line-height: 1.125rem;
+
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
+
+  --inner-width: 1440px;
+
+  overflow-y: scroll;
+
+  background-attachment: fixed !important;
+  background-size: cover;
+  background-size: auto;
+
+}
+
+[data-theme="dark"] {
+
+
+  /* Neutral */
+  --black: #FFF;
+  --d-grey: #f4f4f4;
+  --grey: #dddddd;
+  --l-grey: #9a9a9a;
+  --grey-blue: #5d5d5d;
+  --grey-blue-50: #5d5d5d88;
+  --sliver: #333333;
+  --sliver-50: #33333388;
+  --white: #1e1e1e;
+  --white-50: #1e1e1e88;
+  --white-33: #1e1e1e55;
+
+  /* Primary */
+  --primary: #f5b864;
+  --primary-50: #f5b86488;
+  // --info: #ba9f7e;
+  --info: #d5d5d5;
+  /* Related */
+  --related-1: #175cbe;
+  /* Color Shade */
+  --shade-1: #977b55;
+  --shade-2: #7e6137;
+  /* Color Tint */
+  --tint-1: #dcc4a7;
+  --tint-1-50: #dcc4a788;
+  --tint-2: #f7e8cc;
+  /* Action */
+  --warning: #f5b864;
+  --error: #e26c54;
+  --success: #b3c27d;
+
+  background-color: var(--sliver);
+  // background: url(/src/assets/background-dark.webp);
+}
+
+[data-theme="light"] {
+  /* Neutral */
+  --black: #2c2c2c;
+  --d-grey: #6e6e6e;
+  --grey: #adadad;
+  --l-grey: #cacaca;
+  --grey-blue: #ececec;
+  --grey-blue-50: #ececec88;
+  --sliver: #f7f7f7;
+  --sliver-50: #f7f7f788;
+  --white: #FFF;
+  --white-50: #ffffff88;
+  --white-33: #ffffff55;
+  /* Primary */
+  --primary: #175cbe;
+  --primary-50: #175cbe88;
+  --info: #3d3d3d;
+  /* Related */
+  --related-1: #f5b864;
+  --related-2:#f4ceac;
+  /* Color Shade */
+  --shade-1: #1b1ca4;
+  --shade-2: #1d0e6f;
+  /* Color Tint */
+  --tint-1: #3c7dc5;
+  --tint-1-50: #3c7dc588;
+  --tint-2: #6da2d1;
+  /* Action */
+  --warning: #f5b864;
+  --error: #e26c54;
+  --success: #b3c27d;
+
+  background-color: var(--white);
+  // background: url(/src/assets/background-light.webp);
+}
+
+:root {
+  --color-background: var(--white);
+  --color-background-soft: var(--white);
+  --color-background-mute: var(--sliver);
+
+  --color-border: var(--grey-blue);
+  --color-border-hover: var(--l-grey);
+
+  --color-heading: var(--info);
+  --color-text: var(--info);
+
+  --section-gap: 160px;
+
+  --xs: 0;
+  --sm: 575.98px;
+  --md: 767.98px;
+  --lg: 991.98px;
+  --xl: 1199.98px;
+  --xxl: 1399.98px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--black);
+    --color-background-soft: var(--grey);
+    --color-background-mute: var(--d-grey);
+
+    --color-border: var(--grey-blue);
+    --color-border-hover: var(--sliver);
+
+    --color-heading: var(--grey-blue);
+    --color-text: var(--white);
+  }
+}
+
+/* Scroll Bar */
+/* Customize the overall style of the scrollbar */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Customize the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  @apply bg-greyBlue;
+}
+
+/* Customize the scrollbar thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+  @apply border-4 border-greyBlue border-solid rounded-full bg-lGrey;
+}
+
+/* Customize the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply border-4 border-greyBlue border-solid rounded-full bg-tint1;
+}
+
+a {
+  @apply inline-block font-medium text-primary border-b border-primary border-dashed;
+}
+
+a:hover {
+  @apply bg-tint2;
+}
+
+a.no-style-a {
+  @apply text-info border-none;
+}
+
+h1 {
+  @apply text-3xl leading-tight font-medium;
+}
+
+h2 {
+  @apply text-2xl leading-tight font-normal;
+}
+
+h3 {
+  @apply text-xl leading-tight font-normal;
+}
+
+.button {
+  @apply rounded-lg border border-primary text-white bg-primary py-2 px-4 cursor-pointer duration-200;
+}
+
+.button:hover {
+  @apply bg-tint1 text-white;
+}
+
+.button:focus,
+.button:focus-visible {
+  @apply outline-none;
+}
+
+button{
+  @apply rounded-md border border-greyBlue py-2 px-4 cursor-pointer duration-150 leading-4;
+}
+
+label{
+  @apply flex justify-between items-center;
+}
+
+select {
+  @apply w-24 px-2 py-1 bg-white border border-lGrey dark:border-white cursor-pointer rounded-md focus:outline-none  hover:border-grey;
+}
+
+input[type="text"], input[type="number"] {
+  @apply px-2 py-1 bg-white border border-lGrey dark:border-white rounded-md cursor-pointer hover:border-grey duration-150;
+}
+
+input[type="text"]:focus {
+  @apply cursor-text outline-none border-primary;
+}
+
+input::placeholder{
+  @apply font-light text-grey;
+}
+
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+/* CSS */
+/* input range 主體樣式 */
+input[type="range"] {
+  @apply w-full h-8 overflow-hidden cursor-pointer outline-none bg-transparent;
+
+  &::-webkit-slider-runnable-track {
+    @apply h-1 w-full rounded-full bg-sliver dark:bg-white;
+  }
+
+  &::-webkit-slider-thumb {
+    @apply relative h-4 w-4 -mt-2 translate-y-0.5 border border-primary border-solid rounded-full bg-primary;
+  }
+
+}
+
+.check-box {
+  @apply relative pl-5 select-none cursor-pointer;
+
+  input[type="checkbox"] {
+    @apply cursor-pointer hidden;
+
+    &:checked {
+      &+span {
+        &::after {
+          @apply block;
+        }
+      }
+    }
+  }
+
+  span {
+
+    &::before,
+    &::after {
+      @apply content-[''] absolute top-1/2 -translate-y-[50%];
+    }
+
+    &::before {
+      @apply w-4 h-4 bg-white left-0 rounded;
+    }
+
+    &::after {
+      @apply w-2 h-2 bg-primary left-2 -translate-x-[50%] rounded-sm hidden;
+    }
+  }
+}
+
+datalist {
+  @apply flex justify-between text-xs;
+}
+
+.frame {
+  @apply rounded-md border border-lGrey dark:border-white
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  @apply duration-150;
+  will-change: transform, opacity;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  @apply translate-y-2 opacity-0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  @apply translate-y-0 opacity-100;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: opacity 0.15s cubic-bezier(0.77, 0, 0.175, 1), transform .15s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: opacity, transform;
+}
+
+.list-enter-from,
+.list-leave-to {
+  @apply opacity-0 -translate-y-6;
+}
+
+.list-leave-active {
+  position: absolute;
+  width: 100%;
+}
+#nprogress .bar {
+  background: #D6B381 !important;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  box-shadow: 0 0 10px #D6B381, 0 0 5px #D6B381 !important;
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  top: 10px !important;
+  left: 50% !important;
+  transform: translateXY(-50%, -50%) !important;
+  display: none !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #D6B381 !important;
+  border-left-color: #D6B381 !important;
+}
