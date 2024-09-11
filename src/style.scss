@@ -85,12 +85,12 @@
   --white-33: #1e1e1e55;
 
   /* Primary */
-  --primary: #f5b864;
-  --primary-50: #f5b86488;
+  --primary: #FF885B;
+  --primary-50: #FF885B88;
   // --info: #ba9f7e;
   --info: #d5d5d5;
   /* Related */
-  --related-1: #175cbe;
+  --related-1: #557C56;
   /* Color Shade */
   --shade-1: #977b55;
   --shade-2: #7e6137;
@@ -113,27 +113,27 @@
   --d-grey: #6e6e6e;
   --grey: #adadad;
   --l-grey: #cacaca;
-  --grey-blue: #ececec;
-  --grey-blue-50: #ececec88;
-  --sliver: #f7f7f7;
-  --sliver-50: #f7f7f788;
+  --grey-blue: #f4f4f4;
+  --grey-blue-50: #f4f4f488;
+  --sliver: #fefefe;
+  --sliver-50: #fefefe88;
   --white: #FFF;
   --white-50: #ffffff88;
   --white-33: #ffffff55;
   /* Primary */
-  --primary: #175cbe;
-  --primary-50: #175cbe88;
+  --primary: #557C56;
+  --primary-50: #557C5688;
   --info: #3d3d3d;
   /* Related */
-  --related-1: #f5b864;
-  --related-2:#f4ceac;
+  --related-1: #FF885B;
+  --related-2: #f4ceac;
   /* Color Shade */
-  --shade-1: #1b1ca4;
-  --shade-2: #1d0e6f;
+  --shade-1: #537954;
+  --shade-2: #4A6D4C;
   /* Color Tint */
-  --tint-1: #3c7dc5;
-  --tint-1-50: #3c7dc588;
-  --tint-2: #6da2d1;
+  --tint-1: #5B865D;
+  --tint-1-50: #5B865D88;
+  --tint-2: #639265;
   /* Action */
   --warning: #f5b864;
   --error: #e26c54;
@@ -236,19 +236,20 @@ h3 {
   @apply outline-none;
 }
 
-button{
+button {
   @apply rounded-md border border-greyBlue py-2 px-4 cursor-pointer duration-150 leading-4;
 }
 
-label{
+label {
   @apply flex justify-between items-center;
 }
 
 select {
-  @apply w-24 px-2 py-1 bg-white border border-lGrey dark:border-white cursor-pointer rounded-md focus:outline-none  hover:border-grey;
+  @apply w-24 px-2 py-1 bg-white border border-lGrey dark:border-white cursor-pointer rounded-md focus:outline-none hover:border-grey;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
   @apply px-2 py-1 bg-white border border-lGrey dark:border-white rounded-md cursor-pointer hover:border-grey duration-150;
 }
 
@@ -256,7 +257,7 @@ input[type="text"]:focus {
   @apply cursor-text outline-none border-primary;
 }
 
-input::placeholder{
+input::placeholder {
   @apply font-light text-grey;
 }
 
@@ -317,6 +318,25 @@ datalist {
   @apply flex justify-between text-xs;
 }
 
+table {
+    th,
+    td {
+      @apply border py-2 px-4;
+    }
+
+    thead {
+      th {
+        @apply border-grey bg-greyBlue;
+      }
+    }
+
+    tbody {
+      th, td {
+        @apply border-lGrey;
+      }
+    }
+}
+
 .frame {
   @apply rounded-md border border-lGrey dark:border-white
 }
@@ -353,6 +373,7 @@ datalist {
   position: absolute;
   width: 100%;
 }
+
 #nprogress .bar {
   background: #D6B381 !important;
 }

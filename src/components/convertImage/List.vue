@@ -51,6 +51,20 @@
                         @click="downloadItem" :key="file.state">下載</button>
                 </Transition>
             </div>
+            <Transition name="fade" mode="out-in">
+                <div :class="[{ 'invisible': file.state !== 'converted' }]"
+                class="flex justify-center items-center text-2xl text-grey cursor-pointer hover:rotate-12"
+                @click="previewFile" :key="file.state">
+                    <IconImage />
+                </div>
+            </Transition>
+            <Transition name="fade" mode="out-in">
+                <div :class="[{ 'invisible': file.state !== 'converted' }]"
+                class="flex justify-center items-center text-2xl text-grey cursor-pointer hover:rotate-12"
+                @click="resetFile" :key="file.state">
+                    <IconReset />
+                </div>
+            </Transition>
             <div class="flex justify-center items-center text-2xl text-grey" @click="removeFile">
                 <IconBin class="cursor-pointer" />
             </div>
@@ -59,7 +73,7 @@
 </template>
 
 <script setup>
-import { IconBin, IconSettings, IconInformation } from '@/assets/icons'
+import { IconBin, IconSettings, IconInformation, IconReset, IconImage } from '@/assets/icons'
 import { ref, computed, watch, nextTick } from 'vue';
 import { saveAs } from 'file-saver';
 
@@ -87,13 +101,13 @@ const compressedFile = computed(() => props.compressedFile);
 const selectedType = ref(types[0].mime);
 
 watch(file, async (newVal) => {
-    // console.log(newVal.type);
+    // console.log(newVal.name);
     if (newVal.state === 'unchanged' || newVal.state === 'changed') {
         newVal.state = 'changed';
         selectedType.value = newVal.type;
     }
     await nextTick();
-}, { immediate: true });
+}, { immediate: true, deep:true });
 
 watch(selectedType, (newVal) => {
     const updateFile = {
@@ -115,14 +129,22 @@ const originalFileSize = computed(() => {
     return originalFile.value ? `${(originalFile.value.size / 1024 / 1024).toFixed(2)}MB` : '0MB';
 });
 
-const emits = defineEmits(['remove']);
+const emits = defineEmits(['remove', 'reset', 'preview']);
 
 const removeFile = () => {
     emits('remove');
 };
 
+const resetFile = () =>{
+    emits('reset');
+}
+
+const previewFile = ()=>{
+    emits('preview');
+}
+
 const downloadItem = () => {
-    console.log(compressedFile.value);
+    // console.log(compressedFile.value);
     saveAs(compressedFile.value, file.value.name);
 }
 

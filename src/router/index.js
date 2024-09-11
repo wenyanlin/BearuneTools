@@ -10,17 +10,13 @@ const routes = setupLayouts([
     {
         path: '/',
         meta: { layout: 'MainLayout' },
+        // component: ConvertImageView
         component: HomeView
     },
     {
         path: '/convert-image',
         meta: { layout: 'MainLayout' },
         component: ConvertImageView
-    },
-    {
-        path: '/convert-image-bak',
-        meta: { layout: 'MainLayout' },
-        component: ConvertImageViewBak
     }
 ]);
 

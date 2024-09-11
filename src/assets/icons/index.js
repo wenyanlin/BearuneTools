@@ -8,3 +8,5 @@ export { default as IconTiles } from './IconTiles.vue';
 export { default as IconBin } from './IconBin.vue';
 export { default as IconSettings } from './IconSettings.vue';
 export { default as IconInformation } from './IconInformation.vue';
+export { default as IconReset } from './IconReset.vue';
+export { default as IconImage } from './IconImage.vue';

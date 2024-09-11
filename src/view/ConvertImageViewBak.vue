@@ -123,7 +123,7 @@
 import { reactive, ref, watch, computed } from 'vue';
 import Compressor from 'compressorjs';
 import { saveAs } from 'file-saver';
-import { IconLeftArrow, IconTable, IconTiles } from '@/assets/icons'
+import { IconLeftArrow, IconTable, IconTiles, IconReset } from '@/assets/icons'
 import Tiles from '../components/convertImage/tiles.vue';
 import Table from '../components/convertImage/table.vue';
 import NProgress from 'nprogress';

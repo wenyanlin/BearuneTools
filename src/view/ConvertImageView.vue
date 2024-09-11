@@ -2,62 +2,35 @@
     <div class="w-full h-full flex flex-col justify-center items-center">
         <div class="w-innerWidth columns justify-center py-8 relative">
             <div class="col-span-12 sm:col-span-8 xs:col-span-4">
-                <h1>在線轉換圖像</h1>
-                <div>100%免費圖像轉換器，支持批量轉檔、壓縮、調整大小、重新命名。只在本地端執行，圖像不經過伺服器。</div>
+                <h1>在線轉換圖像 - WebP, JPG, PNG</h1>
+                <div>100%免費圖像轉換器，支持批量轉檔、有損壓縮、調整大小、重新命名。只在本地端執行，圖像不經過伺服器。</div>
             </div>
-            <div
-                class="col-span-12 frame flex flex-col gap-4 justify-center items-center backdrop-blur-xs bg-light-bg dark:bg-dark-bg">
+            <div :class="{ 'gradientBorder': !imageFiles.length }"
+                class="col-span-12 frame flex flex-col gap-4 justify-center items-center bg-white bg-light-bg dark:bg-dark-bg">
                 <label for="imgUploads" @dragover="handleDragOver" @dragleave="dragLeave" @drop.prevent="handleDrop"
                     :class="{ 'isDragging': isDragging }"
                     class="w-full h-64 cursor-pointer flex justify-center items-center">
                     <span><span class="border-b border-primary border-dotted text-center">選擇檔案</span>或拖曳圖片至此……</span>
                 </label>
-                <input type="file" id="imgUploads" class="hidden" multiple="multiple" @change="handleFileSelect">
+                <input type="file" id="imgUploads" class="hidden" multiple="multiple" accept=".webp, .png, .jpg, .jpeg"
+                    @change="handleFileSelect">
             </div>
-            <div class="col-span-9 frame backdrop-blur-xs min-h-full max-h-fit">
+            <div class="col-span-9 frame h-fit">
                 <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
                     <h2>圖像預覽</h2>
                 </div>
                 <div class="grid grid-cols-9 gap-2 mx-4 my-6 relative">
                     <Transition name="fade" mode="out-in">
                         <div class="col-span-9 flex flex-col gap-2" v-if="!imageFiles.length">
-                            <div class="border-b border-greyBlue pb-2 last:border-none" v-for="item in 4" :key="item">
-                                <div class="h-16 flex gap-4 justify-between select-none">
-                                    <div class="flex gap-2 w-[30rem]">
-                                        <div class="w-20 h-full bg-greyBlue overflow    -hidden rounded-md cursor-pointer hover:brightness-90 duration-150
-                            flex justify-center items-center">
-                                        </div>
-                                        <div class="flex flex-col gap-1 flex-1">
-                                            <div class="bg-greyBlue flex-1 rounded-md"></div>
-                                            <div class="text-grey pl-2 bg-greyBlue w-fit flex-1 rounded-md">　　　　</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-4 py-2 pr-4">
-                                        <div class="flex justify-center items-center gap-1">
-                                            <span class="pr-2 pl-3 py-4 rounded-md w-16 bg-greyBlue"></span>
-                                            <span class="px-1 rounded-md bg-greyBlue">　</span>
-                                            <span class="pr-2 pl-3 py-4 rounded-md w-24 bg-greyBlue"></span>
-                                        </div>
-                                        <div>
-                                            <div class="h-6 leading-6 px-2 rounded text-white bg-greyBlue text-sm">　　　　
-                                            </div>
-                                            <!-- <div class="h-6 leading-6 px-2 rounded text-white bg-error text-sm">轉換失敗</div> -->
-                                        </div>
-                                        <div>
-                                            <div class="bg-greyBlue rounded-md py-4 px-8"></div>
-                                        </div>
-                                        <div class="w-6 h-6 bg-greyBlue rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            尚未上傳圖片
                         </div>
                         <TransitionGroup tag="div" name="list" class="col-span-9 flex flex-col gap-2" v-else>
                             <div v-for="(item, index) in imageFiles" :key="item.id || index"
                                 :style="{ top: `${index * 64 + (index - 1) * 8 + 20}px` }"
                                 class="h-16 border-b border-greyBlue last:border-none">
-                                <List v-model="imageFiles[index]" @remove="removeFile(index)"
-                                    :original-file="originalFiles[index]" :compressed-file="compressedFiles[index]">
+                                <List v-model="imageFiles[index]" @remove="removeFile(index)" @reset="resetFile(index)"
+                                    @preview="openPreviewFile(index)" :original-file="originalFiles[index]"
+                                    :compressed-file="compressedFiles[index]">
                                 </List>
                             </div>
                         </TransitionGroup>
@@ -65,7 +38,7 @@
                 </div>
             </div>
             <div class="col-span-3 sticky top-20 h-fit flex flex-col gap-4">
-                <div class="frame backdrop-blur-xs h-fit">
+                <div class="frame h-fit">
                     <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
                         <h2>輸出面板</h2>
                     </div>
@@ -84,6 +57,7 @@
                         </div> -->
                         <!-- click需設置防抖 -->
                         <button :class="{
+                            '!bg-lGrey': !imageFiles.length, '!border-lGrey': !imageFiles.length,
                             'bg-related1': isAllConverted === 'unconverted', 'border-related1': isAllConverted === 'unconverted',
                             'bg-grey': isAllConverted === 'converting', 'border-grey': isAllConverted === 'converting'
                         }" class="bg-primary border-primary text-white py-4 duration-150"
@@ -94,7 +68,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="frame backdrop-blur-xs h-fit">
+                <div class="frame h-fit">
                     <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
                         <h2>批量選項</h2>
                     </div>
@@ -121,7 +95,7 @@
                                     <option :value="0.7">70%</option>
                                     <option :value="0.8">80%</option>
                                     <option :value="0.9">90%</option>
-                                    <option :value="0">自定義</option>
+                                    <!-- <option :value="0">自定義</option> -->
                                 </select>
                             </label>
                             <!-- <label>
@@ -130,7 +104,7 @@
                             </label> -->
                             <label>
                                 保留Exif
-                                <input type="checkbox" checked>
+                                <input type="checkbox" v-model="retainExif">
                             </label>
                         </div>
                         <div class="flex flex-col gap-4 pb-4 border-b border-greyBlue">
@@ -163,11 +137,11 @@
                             </label>
                             <label>
                                 適合大小
-                                <select class="w-48">
+                                <select class="w-48" v-model="resize">
                                     <option value="none">保持源圖像尺寸</option>
                                     <option value="contain">等比 Contain</option>
                                     <option value="cover">撐滿 Cover</option>
-                                    <option value="0">自定義</option>
+                                    <!-- <option value="0">自定義</option> -->
                                 </select>
                             </label>
                         </div>
@@ -176,18 +150,134 @@
             </div>
         </div>
         <div class="w-innerWidth columns justify-center py-8 relative">
-            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 sm:col-span-8 xs:col-span-4">
+            <div
+                class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>如何轉換圖像？</h1>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="/src/assets/convert-image/如何使用.webp" alt="如何使用Bearune轉檔">
+                </div>
             </div>
-            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 sm:col-span-8 xs:col-span-4">
+            <div
+                class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>為什麼我們要將圖片轉換？</h1>
+                <div class="text-md">
+                    <p class="w-1/2">將圖片轉換或壓縮的主要目的是提升圖片的使用效率，這通常適用於網站、應用程序或是其他需要處理大量圖片的情境中。這裡有幾個常見的原因：
+                    </p>
+                    <ol class="w-1/2 list-decimal pl-6">
+                        <li>
+                            <h2>減少文件大小，提升加載速度</h2>
+                            圖片文件通常非常大，尤其是高清圖片。當網站或應用程序需要處理多張圖片時，壓縮圖片可以顯著減少文件大小，從而提升加載速度，提供更流暢的用戶體驗。這在手機端或網速較慢的情況下尤為重要。
+                        </li>
+                        <li>
+                            <h2>優化儲存空間</h2>
+                            不論是本地存儲還是雲端存儲，圖片佔用的空間都會累積。壓縮圖片或將其轉換為更有效的格式（如WebP），可以節省大量儲存空間，同時維持圖片質量。這對於大型應用、電子商務網站等需要儲存大量圖片的系統來說，尤其重要。
+                        </li>
+                        <li>
+                            <h2>兼容不同格式和設備</h2>
+                            不同的設備、瀏覽器或應用程序對圖片格式的支持程度不同。將圖片轉換為多種格式（如JPEG、PNG、WebP等），能確保圖片在不同的平台上正確顯示。例如，WebP
+                            格式有著比 JPEG 或 PNG 更高的壓縮效率，且保留更多的圖片質量，但並不是所有平台都支持它，因此需要根據需求進行轉換。
+                        </li>
+                        <li>
+                            <h2>提升用戶體驗</h2>壓縮和優化圖片能減少網站或應用加載時間，從而減少跳出率並提高用戶留存率。這特別對於電商網站、社交媒體平台等依賴高效用戶交互的應用場景尤為重要。
+                        </li>
+                    </ol>
+                </div>
             </div>
-            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 sm:col-span-8 xs:col-span-4">
+            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>比較JPG、PNG、WEBP</h1>
+                <div class="text-md">
+                    <table class="w-1/2">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>JPG (JPEG)</th>
+                                <th>PNG</th>
+                                <th>WEBP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>壓縮率/文件大小</th>
+                                <td>壓縮率高，較小</td>
+                                <td>壓縮率低，較大</td>
+                                <td>壓縮率高，三種格式中最小</td>
+                            </tr>
+                            <tr>
+                                <th>載入速度</th>
+                                <td>較快</td>
+                                <td>較慢</td>
+                                <td>最快</td>
+                            </tr>
+                            <tr>
+                                <th>壓縮方式</th>
+                                <td>有損壓縮</td>
+                                <td>支持有損和無損壓縮</td>
+                                <td>支持有損和無損壓縮</td>
+                            </tr>
+                            <tr>
+                                <th>圖像品質</th>
+                                <td>有損壓縮可能降低品質，適合照片或多色圖片</td>
+                                <td>保持高品質，適合需要透明背景的圖像</td>
+                                <td>有損壓縮品質優於 JPG，無損壓縮優於 PNG</td>
+                            </tr>
+                            <tr>
+                                <th>透明支持</th>
+                                <td>不支持透明</td>
+                                <td>支持透明</td>
+                                <td>支持透明</td>
+                            </tr>
+                            <tr>
+                                <th>色彩支持</th>
+                                <td>24-bit 色彩（約 1670 萬種顏色）</td>
+                                <td>24-bit 色彩 + 8-bit 透明度通道</td>
+                                <td>24-bit 色彩 + 8-bit 透明度通道</td>
+                            </tr>
+                            <tr>
+                                <th>支援動畫</th>
+                                <td>無</td>
+                                <td>無</td>
+                                <td>有</td>
+                            </tr>
+                            <tr>
+                                <th>適用場景</th>
+                                <td>照片、需要小文件大小且對透明度要求不高的圖像</td>
+                                <td>需要高品質、透明背景或圖標的圖像</td>
+                                <td>現代網頁上推薦的格式，適合需要透明和動態效果的圖像。</td>
+                            </tr>
+                            <tr>
+                                <th>壓縮品質/性能</th>
+                                <td>有損壓縮的品質隨壓縮率增加而下降</td>
+                                <td>無損壓縮保持高品質</td>
+                                <td>在高壓縮下仍保持較好品質</td>
+                            </tr>
+                            <tr>
+                                <th>瀏覽器、軟體支持</th>
+                                <td>廣泛支持</td>
+                                <td>廣泛支持</td>
+                                <td>較舊的瀏覽器、軟體可能不支援，但正在增長</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 sm:col-span-8 xs:col-span-4">
+            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>常見問題</h1>
+                <ol class="w-1/2 list-decimal pl-6">
+                    <li>
+                        <h2>Bearune網站轉檔支援什麼格式轉什麼格式？</h2>
+                        <b>目前支援WebP、JPG、PNG格式互轉</b>，列出來如下：WebP to JPG、WebP to PNG、JPG to WebP、JPG to PNG、PNG to WebP、PNG to JPG
+                    </li>
+                    <li>
+                        <h2>如果我遇到轉檔失敗，哪裡可以回報？</h2>
+                        首先我們要先向你道歉，因為目前網站還在測試當中，可能會產生一些Bug，且目前尚未設置回報區域，但未來將會增設，敬請期待。
+                    </li>
+                </ol>
             </div>
+        </div>
+        <div :class="{ 'invisible': !togglePreview }"
+            class="fixed top-0 left-0 flex justify-center items-center bg-black w-full h-full cursor-pointer z-50"
+            @click="closePreviewFile()">
+            <img :src="previewUrl" class="bg-contain" alt="預覽圖" :width="previewWidth" :height="previewHeight">
         </div>
     </div>
 </template>
@@ -199,7 +289,6 @@ import Compressor from 'compressorjs';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import List from '@/components/convertImage/List.vue';
-import { IconBin } from '@/assets/icons'
 
 const types = [
     {
@@ -232,6 +321,12 @@ const minHeight = ref();
 const width = ref();
 const height = ref();
 const quality = ref(0.8);
+const retainExif = ref(true);
+const resize = ref('none');
+const togglePreview = ref(false);
+const previewUrl = ref('');
+const previewWidth = ref(0);
+const previewHeight = ref(0);
 
 const generatePreview = (file) => {
     return new Promise((resolve, reject) => {
@@ -251,7 +346,7 @@ const generatePreview = (file) => {
     });
 }
 
-const compressFile = (file) => {
+const compressFile = (file, index) => {
     return new Promise((resolve, reject) => {
         new Compressor(file.rawfile, {
             quality: file.quality, // 壓縮質量設置
@@ -262,6 +357,8 @@ const compressFile = (file) => {
             minHeight: file.minHeight,
             width: file.width,
             height: file.height,
+            retainExif: file.retainExif,
+            resize: file.resize,
             success: (result) => {
                 resolve(result); // 壓縮成功，返回壓縮後的圖片
             },
@@ -285,7 +382,7 @@ const clickStart = async () => {
                 if (file.state !== 'converted') {
                     // console.log(`File at index ${index} has changed.`);
                     // 僅對變化的文件進行壓縮處理
-                    compressedFiles[index] = await compressFile(file);
+                    compressedFiles[index] = await compressFile(file, index);
                     file.state = 'converted';
                 }
             });
@@ -299,10 +396,36 @@ const clickStart = async () => {
     }
 }
 
+class FileNameManager {
+    constructor() {
+        this.usedNames = new Set();
+    }
+
+    // 確保檔案名稱唯一
+    getUniqueFileName(baseName, extension) {
+        let uniqueName = `${baseName}.${extension}`;
+        let index = 1;
+
+        while (this.usedNames.has(uniqueName)) {
+            uniqueName = `${baseName} (${index}).${extension}`;
+            index++;
+        }
+
+        this.usedNames.add(uniqueName);
+        return uniqueName;
+    }
+}
+
 const clickDownload = async () => {
+    const fileNameManager = new FileNameManager(); // 創建 FileNameManager 實例
+
     const zip = new JSZip();
-    compressedFiles.map((file) => {
-        zip.file(file.name, file, { base64: true });
+    compressedFiles.map((file, index) => {
+        const baseName = imageFiles[index].name; // 提取檔案基礎名稱
+        const extension = file.name.split('.').pop(); // 獲取檔案擴展名
+        const uniqueName = fileNameManager.getUniqueFileName(baseName, extension);
+        zip.file(uniqueName, file, { base64: true });
+        // zip.file(`${imageFiles[index].name}.${file.name.split('.').pop()}`, file, { base64: true });
     })
     zip.generateAsync({ type: 'blob' }).then((content) => saveAs(content, 'bearuneImage.zip'))
 };
@@ -372,9 +495,27 @@ watch(height, (newVal) => {
 watch(quality, (newVal) => {
     if (isAllConverted.value === 'converted') return;
     imageFiles.forEach((file, index) => {
-        console.log(file.quality);
         if (newVal === file.quality) return;
         imageFiles[index] = { ...file, quality: newVal };
+    });
+    isAllConverted.value = 'unconverted';
+});
+
+watch(retainExif, (newVal) => {
+    if (isAllConverted.value === 'converted') return;
+    imageFiles.forEach((file, index) => {
+        if (newVal === file.retainExif) return;
+        imageFiles[index] = { ...file, retainExif: newVal };
+    });
+    isAllConverted.value = 'unconverted';
+});
+
+watch(resize, (newVal) => {
+    if (isAllConverted.value === 'converted') return;
+    imageFiles.forEach((file, index) => {
+        if (newVal === file.resize) return;
+        imageFiles[index] = { ...file, resize: newVal };
+        // console.log(imageFiles[index].resize);
     });
     isAllConverted.value = 'unconverted';
 });
@@ -394,8 +535,16 @@ const processFiles = async (files) => {
                     size: rawfile.size,
                     type: rawfile.type,
                     lastModified: rawfile.lastModified,
-                    quality: 1,
-                    rawfile: rawfile
+                    rawfile: rawfile,
+                    quality: quality.value || 1,
+                    maxWidth: maxWidth.value || Infinity,
+                    maxHeight: maxHeight.value || Infinity,
+                    minWidth: minWidth.value || 0,
+                    minHeight: minHeight.value || 0,
+                    width: width.value || undefined,
+                    height: height.value || undefined,
+                    retainExif: retainExif || true,
+                    resize: resize || 'none',
                 };
                 imageFiles.push({
                     ...content,
@@ -422,6 +571,47 @@ const removeFile = (index) => {
     }
 };
 
+const resetFile = (index) => {
+    const content = {
+        state: 'unchanged', //unchanged, changed, converted
+        name: originalFiles[index].name.replace(/\.[^/.]+$/, ''),
+        size: originalFiles[index].size,
+        type: originalFiles[index].type,
+        lastModified: originalFiles[index].lastModified,
+        quality: quality.value || 1,
+        maxWidth: maxWidth.value || Infinity,
+        maxHeight: maxHeight.value || Infinity,
+        minWidth: minWidth.value || 0,
+        minHeight: minHeight.value || 0,
+        width: width.value || undefined,
+        height: height.value || undefined,
+        retainExif: retainExif || true,
+        resize: resize || 'none',
+    };
+    imageFiles[index] = { ...imageFiles[index], ...content };
+    originalFiles[index] = { ...originalFiles[index], ...content };
+    // console.log(imageFiles[index]);
+    isAllConverted.value = 'unconverted';
+}
+
+const openPreviewFile = (index) => {
+    togglePreview.value = true;
+    // console.log(compressedFiles[index]);
+    previewUrl.value = URL.createObjectURL(compressedFiles[index]);
+    const img = new Image();
+    img.onload = () => {
+        previewWidth.value = img.naturalWidth;
+        previewHeight.value = img.naturalHeight;
+    };
+    img.onerror = console.error();
+    img.src = previewUrl.value;
+}
+
+const closePreviewFile = () => {
+    togglePreview.value = false;
+    URL.revokeObjectURL(previewUrl.value);
+}
+
 //清除所有圖片
 const clear = () => {
     imageFiles.length = 0;
@@ -433,6 +623,7 @@ const handleDrop = (e) => {
     isDragging.value = false;
     const files = Array.from(e.dataTransfer.files);
     processFiles(files);
+    e.target.value = '';
     isAllConverted.value = 'unconverted';
 }
 
@@ -440,6 +631,7 @@ const handleDrop = (e) => {
 const handleFileSelect = (e) => {
     const files = Array.from(e.target.files);
     processFiles(files);
+    e.target.value = '';
     isAllConverted.value = 'unconverted';
 };
 
@@ -461,5 +653,42 @@ onMounted(() => {
 <style lang="scss" scoped>
 .isDragging {
     @apply border-primary border-dotted bg-primary50;
+}
+
+.gradientBorder {
+    @apply relative;
+
+    &::after {
+        @apply content-[''] absolute -top-1 -left-1 -z-20 w-[calc(100%+8px)] h-[calc(100%+8px)] rounded-lg bg-tint150 opacity-0;
+        animation: fadeInOut 1s;
+        animation-iteration-count: 2;
+    }
+
+    @keyframes fadeInOut {
+
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+ol {
+    @apply py-8;
+
+    li {
+        @apply py-8;
+
+        h2 {
+            @apply font-medium pb-4;
+        }
+    }
 }
 </style>
