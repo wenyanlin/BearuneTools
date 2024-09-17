@@ -16,6 +16,7 @@
     "nprogress": "^0.2.0",
     "pizzip": "^3.1.7",
     "vue": "^3.4.35",
+    "vue-lazyload": "^3.0.0",
     "vue-router": "^4.4.3",
     "vue-worker": "^1.2.1"
   },

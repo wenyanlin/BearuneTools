@@ -1,12 +1,12 @@
 <template>
-    <div class="w-full h-full flex flex-col justify-center items-center">
-        <div class="w-innerWidth columns justify-center py-8 relative">
+    <div class="w-full h-full flex flex-col justify-center items-center xl:px-4">
+        <div class="w-innerWidth columns justify-center py-8 relative xl:w-full">
             <div class="col-span-12 sm:col-span-8 xs:col-span-4">
                 <h1>在線轉換圖像 - WebP, JPG, PNG</h1>
                 <div>100%免費圖像轉換器，支持批量轉檔、有損壓縮、調整大小、重新命名。只在本地端執行，圖像不經過伺服器。</div>
             </div>
-            <div :class="{ 'gradientBorder': !imageFiles.length }"
-                class="col-span-12 frame flex flex-col gap-4 justify-center items-center bg-white bg-light-bg dark:bg-dark-bg">
+            <div :class="{ 'gradientBorder': !imageFiles.length }" class="col-span-12 frame flex flex-col gap-4 justify-center items-center bg-white bg-light-bg dark:bg-dark-bg
+                 sm:col-span-8 xs:col-span-4">
                 <label for="imgUploads" @dragover="handleDragOver" @dragleave="dragLeave" @drop.prevent="handleDrop"
                     :class="{ 'isDragging': isDragging }"
                     class="w-full h-64 cursor-pointer flex justify-center items-center">
@@ -15,19 +15,23 @@
                 <input type="file" id="imgUploads" class="hidden" multiple="multiple" accept=".webp, .png, .jpg, .jpeg"
                     @change="handleFileSelect">
             </div>
-            <div class="col-span-9 frame h-fit">
+            <div class="col-span-9 frame h-fit xl:col-span-8 md:col-span-7 sm:col-span-8 xs:col-span-4">
                 <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
                     <h2>圖像預覽</h2>
                 </div>
-                <div class="grid grid-cols-9 gap-2 mx-4 my-6 relative">
+                <div
+                    class="grid grid-cols-9 gap-2 mx-4 my-6 relative xl:grid-cols-8 md:grid-cols-7 sm:grid-cols-8 xs:grid-cols-4">
                     <Transition name="fade" mode="out-in">
-                        <div class="col-span-9 flex flex-col gap-2" v-if="!imageFiles.length">
+                        <div class="col-span-9 flex flex-col gap-2 xl:col-span-8 md:col-span-7 sm:col-span-8 xs:col-span-4"
+                            v-if="!imageFiles.length">
                             尚未上傳圖片
                         </div>
-                        <TransitionGroup tag="div" name="list" class="col-span-9 flex flex-col gap-2" v-else>
+                        <TransitionGroup tag="div" name="list"
+                            class="col-span-9 flex flex-col gap-2 xl:col-span-8 md:col-span-7 sm:col-span-8 xs:col-span-4"
+                            v-else>
                             <div v-for="(item, index) in imageFiles" :key="item.id || index"
                                 :style="{ top: `${index * 64 + (index - 1) * 8 + 20}px` }"
-                                class="h-16 border-b border-greyBlue last:border-none">
+                                class="h-fit border-b border-greyBlue pb-2 last:border-none last:pb-0">
                                 <List v-model="imageFiles[index]" @remove="removeFile(index)" @reset="resetFile(index)"
                                     @preview="openPreviewFile(index)" :original-file="originalFiles[index]"
                                     :compressed-file="compressedFiles[index]">
@@ -37,7 +41,8 @@
                     </Transition>
                 </div>
             </div>
-            <div class="col-span-3 sticky top-20 h-fit flex flex-col gap-4">
+            <div
+                class="col-span-3 sticky top-20 h-fit flex flex-col gap-4 xl:col-span-4 md:col-span-5 sm:col-span-8 xs:col-span-4">
                 <div class="frame h-fit">
                     <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
                         <h2>輸出面板</h2>
@@ -85,16 +90,17 @@
                             <label>
                                 品質壓縮
                                 <select class="w-48" v-model.number="quality">
-                                    <option :value="0.8">維持原始品質</option>
-                                    <option :value="0.1">10%</option>
-                                    <option :value="0.2">20%</option>
-                                    <option :value="0.3">30%</option>
-                                    <option :value="0.4">40%</option>
-                                    <option :value="0.5">50%</option>
-                                    <option :value="0.6">60%</option>
-                                    <option :value="0.7">70%</option>
-                                    <option :value="0.8">80%</option>
+                                    <option :value="0">預設（最佳化）</option>
+                                    <option :value="1">100%（原圖）</option>
                                     <option :value="0.9">90%</option>
+                                    <option :value="0.8">80%</option>
+                                    <option :value="0.7">70%</option>
+                                    <option :value="0.6">60%</option>
+                                    <option :value="0.5">50%</option>
+                                    <option :value="0.4">40%</option>
+                                    <option :value="0.3">30%</option>
+                                    <option :value="0.2">20%</option>
+                                    <option :value="0.1">10%</option>
                                     <!-- <option :value="0">自定義</option> -->
                                 </select>
                             </label>
@@ -149,21 +155,21 @@
                 </div>
             </div>
         </div>
-        <div class="w-innerWidth columns justify-center py-8 relative">
+        <div class="w-innerWidth columns justify-center py-8 relative xl:w-full">
             <div
                 class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>如何轉換圖像？</h1>
                 <div class="overflow-hidden rounded-lg">
-                    <img src="/src/assets/convert-image/如何使用.webp" alt="如何使用Bearune轉檔">
+                    <img v-lazy="'/src/assets/convert-image/如何使用.webp'" alt="如何使用Bearune轉檔">
                 </div>
             </div>
             <div
                 class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>為什麼我們要將圖片轉換？</h1>
                 <div class="text-md">
-                    <p class="w-1/2">將圖片轉換或壓縮的主要目的是提升圖片的使用效率，這通常適用於網站、應用程序或是其他需要處理大量圖片的情境中。這裡有幾個常見的原因：
+                    <p class="w-1/2 md:w-full">將圖片轉換或壓縮的主要目的是提升圖片的使用效率，這通常適用於網站、應用程序或是其他需要處理大量圖片的情境中。這裡有幾個常見的原因：
                     </p>
-                    <ol class="w-1/2 list-decimal pl-6">
+                    <ol class="w-1/2 list-decimal pl-6 lg:w-3/4 md:w-full">
                         <li>
                             <h2>減少文件大小，提升加載速度</h2>
                             圖片文件通常非常大，尤其是高清圖片。當網站或應用程序需要處理多張圖片時，壓縮圖片可以顯著減少文件大小，從而提升加載速度，提供更流暢的用戶體驗。這在手機端或網速較慢的情況下尤為重要。
@@ -183,10 +189,11 @@
                     </ol>
                 </div>
             </div>
-            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
+            <div
+                class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>比較JPG、PNG、WEBP</h1>
                 <div class="text-md">
-                    <table class="w-1/2">
+                    <table class="w-1/2 lg:w-3/4 md:w-full">
                         <thead>
                             <tr>
                                 <th></th>
@@ -260,24 +267,95 @@
                     </table>
                 </div>
             </div>
-            <div class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
+            <div
+                class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>常見問題</h1>
-                <ol class="w-1/2 list-decimal pl-6">
+                <ol class="w-1/2 list-decimal pl-6 lg:w-3/4 md:w-full">
                     <li>
                         <h2>Bearune網站轉檔支援什麼格式轉什麼格式？</h2>
-                        <b>目前支援WebP、JPG、PNG格式互轉</b>，列出來如下：WebP to JPG、WebP to PNG、JPG to WebP、JPG to PNG、PNG to WebP、PNG to JPG
+                        <b>目前支援WebP、JPG、PNG格式互轉</b>，列出來如下：WebP to JPG、WebP to PNG、JPG to WebP、JPG to PNG、PNG to WebP、PNG
+                        to JPG
                     </li>
                     <li>
                         <h2>如果我遇到轉檔失敗，哪裡可以回報？</h2>
-                        首先我們要先向你道歉，因為目前網站還在測試當中，可能會產生一些Bug，且目前尚未設置回報區域，但未來將會增設，敬請期待。
+                        首先我們要先向您道歉，因為目前網站還在測試當中，可能會產生一些Bug，且目前尚未設置回報區域，但未來將會增設，敬請期待。
                     </li>
                 </ol>
             </div>
         </div>
+        <!-- <div :class="{ 'invisible': !togglePreview }"
+            class="fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center">
+            <div class="absolute top-0 left-0 w-full h-full backdrop-blur-sm cursor-pointer -z-10"
+                @click="closePreviewFile()"></div>
+            <div class="flex flex-col justify-center items-center w-2/3 h-2/3 bg-black overflow-hidden relative
+            lg:w-full lg:h-full">
+                <div class="w-full h-16 backdrop-blur-sm flex justify-between gap-2 items-center p-4 text-white">
+                    <div class="w-full overflow-hidden whitespace-nowrap text-ellipsis">{{ previewImg.name }}</div>
+                    <div class="flex gap-4 items-center">
+                        <div>
+                            {{ previewImg.width }}×{{ previewImg.height }}
+                        </div>
+                        <div class="w-fit cursor-pointer text-white text-3xl" @click="closePreviewFile()">
+                            <IconClose />
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-[calc(100%-4rem)] flex justify-center items-center">
+                    <Transition name="fade" mode="out-in">
+                        <img :src="previewImg.url" class="object-contain max-w-full max-h-full" alt="預覽圖"
+                            :key="previewImg.url">
+                    </Transition>
+                </div>
+                <div class="absolute top-1/2 left-4 text-4xl bg-white50 rounded-md py-4 cursor-pointer"
+                    @click="switchPreview('prev')">
+                    <IconLeftArrow />
+                </div>
+                <div class="absolute top-1/2 right-4 text-4xl bg-white50 rounded-md py-4 cursor-pointer"
+                    @click="switchPreview('next')">
+                    <IconLeftArrow class="rotate-180" />
+                </div>
+            </div>
+        </div> -->
         <div :class="{ 'invisible': !togglePreview }"
-            class="fixed top-0 left-0 flex justify-center items-center bg-black w-full h-full cursor-pointer z-50"
-            @click="closePreviewFile()">
-            <img :src="previewUrl" class="bg-contain" alt="預覽圖" :width="previewWidth" :height="previewHeight">
+            class="fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center">
+            <div class="absolute top-0 left-0 w-full h-full backdrop-blur-sm cursor-pointer -z-10"
+                @click="closePreviewFile()"></div>
+            <div class="flex flex-col justify-center items-center w-2/3 h-2/3 bg-black overflow-hidden relative
+            lg:w-full lg:h-full">
+                <div
+                    class="w-full h-16 backdrop-blur-sm flex justify-between gap-2 items-center p-4 text-white relative">
+                    <div class="w-full overflow-hidden whitespace-nowrap text-ellipsis">{{ previewImg.name }}</div>
+                    <div class="absolute top-full left-4 bg-white33 opacity-50 rounded py-1 px-2">{{isMousedown?'Before':'After（試試長按）'}}</div>
+                    <div class="flex gap-4 items-center">
+                        <div class="flex gap-2">
+                            <div>{{ (currentPreviewImg.size / 1024 / 1024).toFixed(2) }}MB</div>
+                            <div>
+                                {{ previewImg.width }}×{{ previewImg.height }}
+                            </div>
+                        </div>
+                        <div class="w-fit cursor-pointer text-white text-3xl" @click="closePreviewFile()">
+                            <IconClose />
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-[calc(100%-4rem)] flex justify-center items-center cursor-pointer"
+                    @mousedown="startLongPress" @mouseup="endLongPress" @mouseleave="endLongPress"
+                    @touchstart="startLongPress" @touchend="endLongPress" @touchcancel="endLongPress"
+                    @contextmenu="disableContextMenu">
+                    <Transition name="fade" mode="out-in">
+                        <img :src="currentPreviewImg.url" class="object-contain max-w-full max-h-full" alt="預覽圖"
+                            :key="previewImg.url">
+                    </Transition>
+                </div>
+                <div class="absolute top-1/2 left-4 text-4xl bg-white50 rounded-md py-4 cursor-pointer"
+                    @click="switchPreview('prev')">
+                    <IconLeftArrow />
+                </div>
+                <div class="absolute top-1/2 right-4 text-4xl bg-white50 rounded-md py-4 cursor-pointer"
+                    @click="switchPreview('next')">
+                    <IconLeftArrow class="rotate-180" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -289,6 +367,7 @@ import Compressor from 'compressorjs';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import List from '@/components/convertImage/List.vue';
+import { IconClose, IconLeftArrow } from '@/assets/icons';
 
 const types = [
     {
@@ -307,10 +386,17 @@ const types = [
 
 const isDragging = ref(false); //用來跟蹤用戶是否正在拖拽文件到頁面上
 const isAllConverted = ref('unconverted'); //unconverted,converting, converted 
+const isMousedown = ref(false);
 
 const imageFiles = reactive([]); //是一個反應式數組，儲存用戶上傳的圖片文件及相關信息
 const originalFiles = reactive([]);
 const compressedFiles = reactive([]);
+const previewImg = ref('');
+const currentPreviewImg = computed(() => {
+    return isMousedown.value
+    ? { size: previewImg.value.originalSize, url: previewImg.value.originalUrl }
+    : { size: previewImg.value.size, url: previewImg.value.url };
+});
 
 //v-model
 const selectedType = ref(types[0].mime);
@@ -320,13 +406,10 @@ const minWidth = ref();
 const minHeight = ref();
 const width = ref();
 const height = ref();
-const quality = ref(0.8);
+const quality = ref(0);
 const retainExif = ref(true);
 const resize = ref('none');
 const togglePreview = ref(false);
-const previewUrl = ref('');
-const previewWidth = ref(0);
-const previewHeight = ref(0);
 
 const generatePreview = (file) => {
     return new Promise((resolve, reject) => {
@@ -344,12 +427,12 @@ const generatePreview = (file) => {
             }
         });
     });
-}
+};
 
-const compressFile = (file, index) => {
+const compressFile = (file) => {
     return new Promise((resolve, reject) => {
         new Compressor(file.rawfile, {
-            quality: file.quality, // 壓縮質量設置
+            quality: file.quality != 0 ? file.quality : (file.type === 'image/jpeg' ? 0.92 : file.type === 'image/webp' ? 0.8 : 1), // 壓縮質量設置
             mimeType: file.type,
             maxWidth: file.maxWidth,
             maxHeight: file.maxHeight,
@@ -367,7 +450,7 @@ const compressFile = (file, index) => {
             }
         });
     });
-}
+};
 
 const clickStart = async () => {
     if (imageFiles.length === 0) return;
@@ -394,7 +477,7 @@ const clickStart = async () => {
             isAllConverted.value = 'converted';
         }
     }
-}
+};
 
 class FileNameManager {
     constructor() {
@@ -414,7 +497,7 @@ class FileNameManager {
         this.usedNames.add(uniqueName);
         return uniqueName;
     }
-}
+};
 
 const clickDownload = async () => {
     const fileNameManager = new FileNameManager(); // 創建 FileNameManager 實例
@@ -592,31 +675,67 @@ const resetFile = (index) => {
     originalFiles[index] = { ...originalFiles[index], ...content };
     // console.log(imageFiles[index]);
     isAllConverted.value = 'unconverted';
-}
+};
 
 const openPreviewFile = (index) => {
-    togglePreview.value = true;
-    // console.log(compressedFiles[index]);
-    previewUrl.value = URL.createObjectURL(compressedFiles[index]);
-    const img = new Image();
-    img.onload = () => {
-        previewWidth.value = img.naturalWidth;
-        previewHeight.value = img.naturalHeight;
-    };
-    img.onerror = console.error();
-    img.src = previewUrl.value;
-}
+    if (compressedFiles[index]) {
+        togglePreview.value = true;
+        const url = URL.createObjectURL(compressedFiles[index]);
+        const originalUrl = URL.createObjectURL(originalFiles[index].rawfile);
+        previewImg.value = {
+            name: imageFiles[index].name,
+            type: compressedFiles[index].type,
+            size: compressedFiles[index].size,
+            url,
+            // originalName:originalFiles[index].rawfile.name,
+            originalType: originalFiles[index].rawfile.type,
+            originalSize: originalFiles[index].rawfile.size,
+            originalUrl,
+            width: 0,
+            height: 0,
+            index
+        };
+        const img = new Image();
+        img.onload = () => {
+            previewImg.value.width = img.naturalWidth;
+            previewImg.value.height = img.naturalHeight;
+        };
+        img.onerror = (error) => {
+            console.error("Image failed to load:", error);
+            URL.revokeObjectURL(url);
+        };
+        img.src = url;
+    }
+};
 
 const closePreviewFile = () => {
     togglePreview.value = false;
-    URL.revokeObjectURL(previewUrl.value);
-}
+    previewImg.value = '';
+    URL.revokeObjectURL(previewImg.value.url);
+};
+
+const switchPreview = (e) => {
+    const index = e === 'prev'
+        ? (previewImg.value.index - 1 >= 0 ? previewImg.value.index - 1 : compressedFiles.length - 1)
+        : (previewImg.value.index + 1 < compressedFiles.length ? previewImg.value.index + 1 : 0);
+    openPreviewFile(index);
+};
+
+watch(togglePreview, (newVal) => {
+    if (newVal) {
+        // 禁用滾動條
+        document.documentElement.style.overflow = 'hidden';
+    } else {
+        // 恢復滾動條
+        document.documentElement.style.overflow = '';
+    }
+});
 
 //清除所有圖片
 const clear = () => {
     imageFiles.length = 0;
     steps.value = 1;
-}
+};
 
 //處理拖拉過來的檔案
 const handleDrop = (e) => {
@@ -625,7 +744,7 @@ const handleDrop = (e) => {
     processFiles(files);
     e.target.value = '';
     isAllConverted.value = 'unconverted';
-}
+};
 
 //處理點選進來的檔案
 const handleFileSelect = (e) => {
@@ -639,11 +758,34 @@ const handleFileSelect = (e) => {
 const handleDragOver = (e) => {
     e.preventDefault();
     isDragging.value = true;
-}
+};
 
 const dragLeave = (e) => {
     isDragging.value = false;
-}
+};
+
+let pressTimer = null;
+
+const startLongPress = () => {
+    pressTimer = setTimeout(() => {
+        isMousedown.value = true;
+    }, 100); // 長按100毫秒後切換圖片
+};
+
+const endLongPress = () => {
+    // 清除計時器，恢復預覽圖片
+    if (pressTimer) {
+        clearTimeout(pressTimer);
+        pressTimer = null;
+    }
+    isMousedown.value = false;
+};
+
+// 禁用右鍵選單的函數
+const disableContextMenu = (event) => {
+  event.preventDefault();
+};
+
 
 onMounted(() => {
     document.addEventListener('wheel', { passive: true });

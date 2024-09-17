@@ -17,7 +17,7 @@
 @layer utilities {}
 
 :root {
-  @apply tracking-wider;
+  @apply tracking-wider text-base xs:text-sm;
 
   font-family: "Noto Sans TC", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-optical-sizing: auto;
@@ -35,7 +35,6 @@
   /* font-style */
   /* font-size: clamp(.83vw, 16px, 48px); */
   /* font-size: clamp(calc(8px + 0.390625vw), 14px, 20px); */
-  font-size: 16px;
   /* Header */
   --h1-size: 2.125rem;
   --h1-line-height: 2.625rem;

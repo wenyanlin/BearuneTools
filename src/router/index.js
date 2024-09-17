@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter, NavigationFailureType, isNavigationFailure, } from 'vue-router'
 import HomeView from '@/view/HomeView.vue'
 import ConvertImageView from '@/view/ConvertImageView.vue'
+import ConvertImageToWebpView from '@/view/ConvertImageToWebpView.vue'
 import ConvertImageViewBak from '@/view/ConvertImageViewBak.vue'
 import { setupLayouts } from 'virtual:generated-layouts'
 import NProgress from 'nprogress';
@@ -17,6 +18,11 @@ const routes = setupLayouts([
         path: '/convert-image',
         meta: { layout: 'MainLayout' },
         component: ConvertImageView
+    },
+    {
+        path: '/convert-image-to-webp',
+        meta: { layout: 'MainLayout' },
+        component: ConvertImageToWebpView
     }
 ]);
 

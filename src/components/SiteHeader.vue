@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-16 flex justify-center backdrop-blur-lg bg-50 sticky top-0 z-40 border-b border-greyBlue">
-        <div class="w-innerWidth flex justify-between items-center h-full">
+        <div class="w-innerWidth flex justify-between items-center h-full xl:w-full">
             <div class="h-4/6 cursor-pointer py-1 px-2 flex gap-2 rounded-lg text-info hover:bg-greyBlue50"
                 @click="navigateHome">
                 <IconLogo />
@@ -11,8 +11,8 @@
                     <RouterLink to="/convert-image" class="navigation_link no-style-a">圖片轉檔</RouterLink>
                     <RouterLink to="/convert-image" class="navigation_link no-style-a">圖片裁剪</RouterLink> -->
                     <RouterLink to="/convert-image" class="navigation_link no-style-a">在線轉換圖像</RouterLink>
-                    <RouterLink to="/about-me" class="navigation_link no-style-a">關於我</RouterLink>
-                    <!-- <RouterLink to="/convert-image" class="navigation_link no-style-a">多功能圖片處理工具</RouterLink> -->
+                    <RouterLink to="/convert-image-to-webp" class="navigation_link no-style-a">一鍵轉WebP</RouterLink>
+                    <!-- <RouterLink to="/about-me" class="navigation_link no-style-a">關於我</RouterLink> -->
                     <!-- <RouterLink to="/convert-image" class="navigation_link no-style-a">Bearune系列</RouterLink> -->
                 </div>
                 <SwitchButton :default-checked="currentTheme == 'dark' ? true : false" :run-event="switchTheme">
