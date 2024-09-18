@@ -10,7 +10,7 @@
                         <img :src="project.preview" alt="" class="object-contain" v-show="project.preview">
                     </div>
                     <div class="p-4 flex flex-col xs:p-2">
-                        <h2 class="group-hover:text-primary overflow-hidden whitespace-nowrap text-ellipsis">{{
+                        <h2 class="group-hover:text-primary overflow-hidden whitespace-nowrap text-ellipsis dark:text-black">{{
                             project.title }}</h2>
                         <p class="text-dGrey clamp">{{ project.introduction }} </p>
                     </div>
