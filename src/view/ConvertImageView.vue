@@ -160,7 +160,7 @@
                 class="col-span-12 border-t border-greyBlue mt-16 pt-16 flex flex-col gap-6 sm:col-span-8 xs:col-span-4">
                 <h1>如何轉換圖像？</h1>
                 <div class="overflow-hidden rounded-lg">
-                    <img v-lazy="'/src/assets/convert-image/如何使用.webp'" alt="如何使用Bearune轉檔">
+                    <img src="/src/assets/convert-image/如何使用.webp" alt="如何使用Bearune轉檔">
                 </div>
             </div>
             <div
