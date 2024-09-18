@@ -16,7 +16,7 @@
                     @change="handleFileSelect">
             </div>
             <div class="col-span-9 frame h-fit xl:col-span-8 md:col-span-7 sm:col-span-8 xs:col-span-4">
-                <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
+                <div class="w-full h-fit p-4 border-b border-lGrey border-solid dark:border-white">
                     <h2>圖像預覽</h2>
                 </div>
                 <div
@@ -31,7 +31,7 @@
                             v-else>
                             <div v-for="(item, index) in imageFiles" :key="item.id || index"
                                 :style="{ top: `${index * 64 + (index - 1) * 8 + 20}px` }"
-                                class="h-fit border-b border-greyBlue pb-2 last:border-none last:pb-0">
+                                class="h-fit border-b border-greyBlue pb-2 last:border-none last:pb-0 dark:border-sliver">
                                 <List v-model="imageFiles[index]" @remove="removeFile(index)" @reset="resetFile(index)"
                                     @preview="openPreviewFile(index)" :original-file="originalFiles[index]"
                                     :compressed-file="compressedFiles[index]">
@@ -44,7 +44,7 @@
             <div
                 class="col-span-3 sticky top-20 h-fit flex flex-col gap-4 xl:col-span-4 md:col-span-5 sm:col-span-8 xs:col-span-4">
                 <div class="frame h-fit">
-                    <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
+                    <div class="w-full h-fit p-4 border-b border-lGrey border-solid dark:border-white">
                         <h2>輸出面板</h2>
                     </div>
                     <div class="flex flex-col gap-4 px-4 py-6">
@@ -74,11 +74,11 @@
                     </div>
                 </div>
                 <div class="frame h-fit">
-                    <div class="w-full h-fit p-4 border-b border-lGrey border-solid">
+                    <div class="w-full h-fit p-4 border-b border-lGrey border-solid dark:border-white">
                         <h2>批量選項</h2>
                     </div>
                     <div class="flex flex-col gap-4 px-4 py-6">
-                        <div class="flex flex-col gap-4 pb-4 border-b border-greyBlue">
+                        <div class="flex flex-col gap-4 pb-4 border-b border-greyBlue dark:border-sliver">
                             <h3>圖像資訊</h3>
                             <label>
                                 檔案類型

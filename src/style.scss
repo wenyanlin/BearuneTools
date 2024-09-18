@@ -71,32 +71,32 @@
 
 
   /* Neutral */
-  --black: #FFF;
-  --d-grey: #f4f4f4;
-  --grey: #dddddd;
-  --l-grey: #9a9a9a;
-  --grey-blue: #5d5d5d;
-  --grey-blue-50: #5d5d5d88;
-  --sliver: #333333;
-  --sliver-50: #33333388;
-  --white: #1e1e1e;
-  --white-50: #1e1e1e88;
-  --white-33: #1e1e1e55;
+  --black: #ffffff;
+  --d-grey: #a1a1a1;
+  --grey: #6d6d6d;
+  --l-grey: #545454;
+  --grey-blue: #333333;
+  --grey-blue-50: #33333388;
+  --sliver: #242424;
+  --sliver-50: #24242488;
+  --white: #1a1a1a;
+  --white-50: #1a1a1a88;
+  --white-33: #1a1a1a55;
 
   /* Primary */
   --primary: #FF885B;
   --primary-50: #FF885B88;
   // --info: #ba9f7e;
-  --info: #d5d5d5;
+  --info: #a1a1a1;
   /* Related */
   --related-1: #557C56;
   /* Color Shade */
-  --shade-1: #977b55;
-  --shade-2: #7e6137;
+  --shade-1: #FF7847;
+  --shade-2: #FF6933;
   /* Color Tint */
-  --tint-1: #dcc4a7;
-  --tint-1-50: #dcc4a788;
-  --tint-2: #f7e8cc;
+  --tint-1: #FF9670;
+  --tint-1-50: #FF967088;
+  --tint-2: #FFA585;
   /* Action */
   --warning: #f5b864;
   --error: #e26c54;
@@ -114,8 +114,8 @@
   --l-grey: #cacaca;
   --grey-blue: #f4f4f4;
   --grey-blue-50: #f4f4f488;
-  --sliver: #fefefe;
-  --sliver-50: #fefefe88;
+  --sliver: #f8f8f8;
+  --sliver-50: #f8f8f888;
   --white: #FFF;
   --white-50: #ffffff88;
   --white-33: #ffffff55;
@@ -211,7 +211,7 @@ a.no-style-a {
 }
 
 h1 {
-  @apply text-3xl leading-tight font-medium;
+  @apply text-3xl leading-tight font-medium dark:text-black;
 }
 
 h2 {
@@ -248,11 +248,14 @@ select {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="url"] {
   @apply px-2 py-1 bg-white border border-lGrey dark:border-white rounded-md cursor-pointer hover:border-grey duration-150;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus  {
   @apply cursor-text outline-none border-primary;
 }
 
@@ -279,6 +282,18 @@ input[type="range"] {
     @apply relative h-4 w-4 -mt-2 translate-y-0.5 border border-primary border-solid rounded-full bg-primary;
   }
 
+}
+
+textarea{
+  @apply bg-white rounded-md cursor-pointer;
+
+  &::placeholder{
+    @apply font-light text-grey;
+  }
+
+  &:focus{
+    @apply cursor-text outline-none border-primary;
+  }
 }
 
 .check-box {
@@ -318,26 +333,29 @@ datalist {
 }
 
 table {
+
+  th,
+  td {
+    @apply border py-2 px-4;
+  }
+
+  thead {
+    th {
+      @apply border-grey bg-greyBlue;
+    }
+  }
+
+  tbody {
+
     th,
     td {
-      @apply border py-2 px-4;
+      @apply border-lGrey;
     }
-
-    thead {
-      th {
-        @apply border-grey bg-greyBlue;
-      }
-    }
-
-    tbody {
-      th, td {
-        @apply border-lGrey;
-      }
-    }
+  }
 }
 
 .frame {
-  @apply rounded-md border border-lGrey dark:border-white
+  @apply rounded-md border border-lGrey dark:border-white dark:bg-greyBlue;
 }
 
 .fade-enter-active,

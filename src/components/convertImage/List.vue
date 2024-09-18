@@ -28,7 +28,7 @@
             </div>
             <div class="flex justify-center items-center" v-else>
                 <span>{{ types.find(item => item.mime === originalFile.type).name }}</span><span class="px-2">to</span>
-                <span class="pr-2 pl-3 py-1 rounded-md w-24 font-semibold bg-greyBlue">{{ types.find(item =>
+                <span class="pr-2 pl-3 py-1 rounded-md w-24 font-semibold bg-greyBlue dark:text-dGrey">{{ types.find(item =>
                     item.mime === compressedFile.type).name }}</span>
             </div>
             <!-- <div

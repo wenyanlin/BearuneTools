@@ -2,6 +2,7 @@ import { createWebHistory, createRouter, NavigationFailureType, isNavigationFail
 import HomeView from '@/view/HomeView.vue'
 import ConvertImageView from '@/view/ConvertImageView.vue'
 import ConvertImageToWebpView from '@/view/ConvertImageToWebpView.vue'
+import QRCodeGeneratorView from '@/view/QRCodeGeneratorView.vue'
 import ConvertImageViewBak from '@/view/ConvertImageViewBak.vue'
 import { setupLayouts } from 'virtual:generated-layouts'
 import NProgress from 'nprogress';
@@ -23,7 +24,12 @@ const routes = setupLayouts([
         path: '/convert-image-to-webp',
         meta: { layout: 'MainLayout' },
         component: ConvertImageToWebpView
-    }
+    },
+    {
+        path: '/qrcode-generator',
+        meta: { layout: 'MainLayout' },
+        component: QRCodeGeneratorView
+    },
 ]);
 
 const router = createRouter({
@@ -46,6 +52,6 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach(() => {
     NProgress.done();
-  });
+});
 
 export default router;

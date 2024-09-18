@@ -1,9 +1,9 @@
 <template>
     <div class="w-full h-fit flex justify-between gap-2 select-none lg:flex-wrap lg:gap-1">
-        <div :class="{'cursor-pointer':compressedFile,'hover:brightness-95':compressedFile}" class="w-20 aspect-[4/3] bg-greyBlue overflow-hidden rounded flex justify-center items-center" @click="previewFile">
+        <div :class="{'cursor-pointer':compressedFile,'hover:brightness-95':compressedFile}" class="w-20 aspect-[4/3] bg-greyBlue overflow-hidden rounded flex justify-center items-center rounded-r-none dark:bg-sliver" @click="previewFile">
             <img :src="file.preview" :alt="`${file.name}-預覽圖`" class="object-contain">
         </div>
-        <div class="flex flex-col flex-1 justify-center">
+        <div class="flex flex-col flex-1 justify-center mr-4">
             <label>
                 <input type="text" :placeholder="file.name" maxlength="100" class="titleInput" v-model="file.name">
             </label>
