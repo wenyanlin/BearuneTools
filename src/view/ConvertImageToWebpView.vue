@@ -6,7 +6,7 @@
                 xs:col-span-4 xs:grid-cols-4">
                 <div class="col-span-6 sm:col-span-8 xs:col-span-4">
                     <h1>一鍵轉WebP</h1>
-                    <div>100%免費WebP轉換器，只在本地端執行，圖像不經過伺服器。僅支援JPG、PNG格式。</div>
+                    <div>100%免費WebP轉換器，只在本地端執行，圖像不經過伺服器。僅支援JPG、PNG格式。<span class="text-primary" v-if="isIOS()"><br>*目前ios不支援轉webp</span></div>
                 </div>
                 <div :class="{ 'gradientBorder': !imageFiles.length }" class="col-span-6 frame flex flex-col gap-4 justify-center items-center bg-white bg-light-bg dark:bg-dark-bg
                 sm:col-span-8 xs:col-span-4">
@@ -95,6 +95,7 @@ import Compressor from 'compressorjs';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver'
 import List from '@/components/convertImageToWebpView/List.vue';
+import { isIOS } from '@/plugins/checkDevice.js';
 
 const isDragging = ref(false); //用來跟蹤用戶是否正在拖拽文件到頁面上
 const isAllConverted = ref('unconverted'); //unconverted,converting, converted ;
@@ -134,7 +135,9 @@ const compressFile = (file) => {
     return new Promise((resolve, reject) => {
         new Compressor(file.rawfile, {
             quality: 1,
-            mimeType: file.type,
+            mimeType: 'image/webp',
+            convertType:'image/webp',
+            convertSize:Infinity,
             success: (result) => {
                 resolve(result); // 壓縮成功，返回壓縮後的圖片
             },
@@ -356,6 +359,7 @@ const endLongPress = () => {
 const disableContextMenu = (event) => {
   event.preventDefault();
 };
+
 </script>
 
 <style lang="scss" scoped>

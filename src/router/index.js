@@ -29,7 +29,7 @@ const routes = setupLayouts([
         path: '/qrcode-generator',
         meta: { layout: 'MainLayout' },
         component: QRCodeGeneratorView
-    },
+    }
 ]);
 
 const router = createRouter({

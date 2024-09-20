@@ -3,7 +3,7 @@
         <div class="w-innerWidth columns justify-center py-8 relative xl:w-full">
             <div class="col-span-12 sm:col-span-8 xs:col-span-4">
                 <h1>在線轉換圖像 - WebP, JPG, PNG</h1>
-                <div>100%免費圖像轉換器，支持批量轉檔、有損壓縮、調整大小、重新命名。只在本地端執行，圖像不經過伺服器。</div>
+                <div>100%免費圖像轉換器，支持批量轉檔、有損壓縮、調整大小、重新命名。只在本地端執行，圖像不經過伺服器。<span class="text-primary" v-if="isIOS()"><br>*目前ios不支援轉webp</span></div>
             </div>
             <div :class="{ 'gradientBorder': !imageFiles.length }" class="col-span-12 frame flex flex-col gap-4 justify-center items-center bg-white bg-light-bg dark:bg-dark-bg
                  sm:col-span-8 xs:col-span-4">
@@ -368,6 +368,7 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import List from '@/components/convertImage/List.vue';
 import { IconClose, IconLeftArrow } from '@/assets/icons';
+import { isIOS } from '@/plugins/checkDevice.js';
 
 const types = [
     {
@@ -434,6 +435,8 @@ const compressFile = (file) => {
         new Compressor(file.rawfile, {
             quality: file.quality != 0 ? file.quality : (file.type === 'image/jpeg' ? 0.92 : file.type === 'image/webp' ? 0.8 : 1), // 壓縮質量設置
             mimeType: file.type,
+            convertType:file.type,
+            convertSize:Infinity,
             maxWidth: file.maxWidth,
             maxHeight: file.maxHeight,
             minWidth: file.minWidth,

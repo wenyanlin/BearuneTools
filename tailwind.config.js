@@ -61,9 +61,6 @@ export default {
         serif: ['Merriweather', 'serif'],
       },
     }
-  },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
+  }
 }
 

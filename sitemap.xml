@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- 首頁 -->
+  <url>
+    <loc>https://bearune.com/</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bearune.com/assets/convert%20image-CAfblhoO.webp</image:loc>
+      <image:caption>在線轉換圖像工具convert-image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bearune.com/assets/convert%20image%20to%20webp-B-3-QBB7.webp</image:loc>
+      <image:caption>一鍵轉WebP工具convert-image-to-webp</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bearune.com/assets/qrcode%20generator-DkvVHFOR.webp</image:loc>
+      <image:caption>QR碼產生器工具qrcode-generator</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Convert Image to WebP -->
+  <url>
+    <loc>https://bearune.com/convert-image-to-webp</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Convert Image -->
+  <url>
+    <loc>https://bearune.com/convert-image</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- QR Code Generator -->
+  <url>
+    <loc>https://bearune.com/qrcode-generator</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
