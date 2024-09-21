@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- 首頁 -->
   <url>
     <loc>https://bearune.com/</loc>
@@ -20,7 +20,7 @@
       <image:caption>QR碼產生器工具qrcode-generator</image:caption>
     </image:image>
   </url>
-
+  
   <!-- Convert Image to WebP -->
   <url>
     <loc>https://bearune.com/convert-image-to-webp</loc>
@@ -28,7 +28,7 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
+  
   <!-- Convert Image -->
   <url>
     <loc>https://bearune.com/convert-image</loc>
@@ -36,34 +36,12 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-
+  
   <!-- QR Code Generator -->
   <url>
     <loc>https://bearune.com/qrcode-generator</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- 熊語清風 -->
-  <url>
-    <loc>https://bearune.com/wenyan/</loc>
-    <lastmod>2024-09-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://bearune.com/wenyan/daily-life/catnip-planting-tutorial/</loc>
-    <lastmod>2024-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://bearune.com/wenyan/daily-life/catnip-planting-diary/</loc>
-    <lastmod>2024-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>
