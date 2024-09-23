@@ -126,6 +126,7 @@
   /* Related */
   --related-1: #FF885B;
   --related-2: #f4ceac;
+  --related-3: #e2dfd6;
   /* Color Shade */
   --shade-1: #537954;
   --shade-2: #4A6D4C;
@@ -203,7 +204,7 @@ a {
 }
 
 a:hover {
-  @apply bg-tint2;
+  @apply bg-greyBlue50;
 }
 
 a.no-style-a {

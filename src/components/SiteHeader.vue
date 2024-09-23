@@ -12,6 +12,8 @@
                     <RouterLink v-for="link in links" :key="link.path" :to="link.path"
                         class="navigation_link no-style-a">{{ link.title }}</RouterLink>
                 </div>
+                <button @click="goToWenyan"
+                    class="border-primary text-primary hover:bg-shade1 hover:text-white">熊語清風</button>
                 <SwitchButton :default-checked="currentTheme == 'dark' ? true : false" :run-event="switchTheme">
                 </SwitchButton>
                 <a href="https://buymeacoffee.com/bearune" class="no-style-a hover:bg-transparent hover:brightness-75"
@@ -31,8 +33,9 @@
                         <div class="col-span-4 col-start-3 flex flex-col navigation_links xs:col-span-2 xs:col-start-2">
                             <RouterLink v-for="link in links" :key="link.path" :to="link.path"
                                 class="navigation_link border-b !rounded-none border-sliver !border-solid !py-4 no-style-a">
-                                {{
-                                    link.title }}</RouterLink>
+                                {{ link.title }}</RouterLink>
+                            <button @click="goToWenyan"
+                                class="border-primary text-primary hover:bg-shade1 hover:text-white">熊語清風</button>
                             <div class="flex justify-between items-center bg-greyBlue mt-4 p-4 rounded-lg">
                                 <span>外觀</span>
                                 <SwitchButton :default-checked="currentTheme == 'dark' ? true : false"
@@ -71,6 +74,10 @@ const links = [
         path: "/convert-image-to-webp"
     }
 ]
+
+const goToWenyan = () => {
+    window.location.href = '/wenyan/';
+}
 
 const route = useRoute();
 const router = useRouter();

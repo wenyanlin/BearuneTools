@@ -676,6 +676,7 @@ const resetFile = (index) => {
     };
     imageFiles[index] = { ...imageFiles[index], ...content };
     originalFiles[index] = { ...originalFiles[index], ...content };
+    compressedFiles[index] = '';
     // console.log(imageFiles[index]);
     isAllConverted.value = 'unconverted';
 };

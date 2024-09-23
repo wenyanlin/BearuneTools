@@ -1,7 +1,7 @@
 <template>
-    <div class="flex justify-center items-center py-8 sm:px-4">
-        <div class="w-innerWidth columns">
-            <div class="col-span-6 col-start-4 grid grid-cols-6 gap-6
+    <div class=" flex justify-center py-8 sm:px-4">
+        <div class="w-innerWidth columns h-fit">
+            <div class="col-span-6 col-start-4 grid grid-cols-6 gap-6 h-fit
             lg:col-span-8 lg:col-start-3 sm:col-span-8 sm:col-start-1 sm:grid-cols-8 xs:col-span-4 xs:grid-cols-4">
                 <RouterLink :to="project.path" v-for="project in projects" :key="item"
                     class="col-span-3 aspect-[4/5] frame text-info border-solid font-normal overflow-hidden select-none cursor-pointer group hover:border-primary hover:bg-white

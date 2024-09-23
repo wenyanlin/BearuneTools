@@ -11,3 +11,4 @@ export { default as IconInformation } from './IconInformation.vue';
 export { default as IconReset } from './IconReset.vue';
 export { default as IconImage } from './IconImage.vue';
 export { default as IconClose } from './IconClose.vue';
+export { default as IconMail } from './IconMail.vue';
