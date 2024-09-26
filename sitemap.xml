@@ -44,4 +44,12 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 熊語清風 -->
+  <url>
+    <loc>https://bearune.com/wenyan/</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
