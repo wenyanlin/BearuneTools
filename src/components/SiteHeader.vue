@@ -7,7 +7,7 @@
                 <img src="/src/assets/icons/LOGO.webp" alt="" class="dark:hidden">
                 <img src="/src/assets/icons/LOGO-dark.webp" alt="" class="hidden dark:block">
             </div>
-            <div class="flex justify-between items-center gap-4 sm:hidden">
+            <div class="flex justify-between items-center gap-4 lg:hidden">
                 <div class="flex navigation_links desktopMenu">
                     <RouterLink v-for="link in links" :key="link.path" :to="link.path"
                         class="navigation_link no-style-a">{{ link.title }}</RouterLink>
@@ -20,7 +20,7 @@
                     target="_blank"><img src="/src/assets/bmc-button.svg" alt=""></a>
 
             </div>
-            <div class="hidden justify-between items-center gap-8 sm:flex">
+            <div class="hidden justify-between items-center gap-8 lg:flex">
                 <button class="p-0 border-none" @click.prevent="toggleMobileMenu">
                     <span :class="{ 'is-active': isOpen }" class="hamburger-container">
                         <span class="hamburger-top"></span>
@@ -62,6 +62,10 @@ import { watch } from 'vue';
 
 const links = [
     {
+        title: "Emoji大全",
+        path: "/emoji"
+    },
+    {
         title: "QR碼產生器",
         path: "/qrcode-generator"
     },
@@ -76,7 +80,7 @@ const links = [
 ]
 
 const goToWenyan = () => {
-    window.location.href = '/wenyan/';
+    window.location.href = 'https://bearune.com/wenyan/';
 }
 
 const route = useRoute();

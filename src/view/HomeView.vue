@@ -25,6 +25,7 @@ import { RouterLink } from 'vue-router';
 import convertImageWebp from '@/assets/preview/convert image.webp';
 import convertImageToWebp from '@/assets/preview/convert image to webp.webp';
 import qrcodeGenerator from '@/assets/preview/qrcode generator.webp';
+import emoji from '@/assets/preview/emoji.webp';
 
 
 const projects = [
@@ -41,10 +42,16 @@ const projects = [
         preview: convertImageToWebp,
     },
     {
-        title: 'QR碼產生器（極簡版）',
+        title: 'QR碼產生器',
         introduction: '目前正在開發中，未來將會增加更多客製內容。',
         path: '/qrcode-generator',
         preview: qrcodeGenerator,
+    },
+    {
+        title: 'Emoji大全',
+        introduction: '點擊表情符號即可複製。目前共有3655種Emjio可以複製，並提供膚色及髮色切換。',
+        path: '/emoji',
+        preview: emoji,
     }
 ]
 

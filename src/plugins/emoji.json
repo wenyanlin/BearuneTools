@@ -1,6 +1,6 @@
 [
     {
-        "slug":"表情符號與人物",
+        "slug": "表情符號與人物",
         "slug-en": "smileys-emotion",
         "subCategories": [
             {
@@ -4797,7 +4797,8 @@
                 "unicodeName": "E12.0 mechanical arm",
                 "codePoint": "1F9BE",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e12-0-mechanical-leg",
@@ -4805,7 +4806,8 @@
                 "unicodeName": "E12.0 mechanical leg",
                 "codePoint": "1F9BF",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e11-0-leg",
@@ -5188,7 +5190,8 @@
                 "unicodeName": "E5.0 brain",
                 "codePoint": "1F9E0",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e13-0-anatomical-heart",
@@ -5196,7 +5199,8 @@
                 "unicodeName": "E13.0 anatomical heart",
                 "codePoint": "1FAC0",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e13-0-lungs",
@@ -5204,7 +5208,8 @@
                 "unicodeName": "E13.0 lungs",
                 "codePoint": "1FAC1",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e11-0-tooth",
@@ -5212,7 +5217,8 @@
                 "unicodeName": "E11.0 tooth",
                 "codePoint": "1F9B7",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e11-0-bone",
@@ -5220,7 +5226,8 @@
                 "unicodeName": "E11.0 bone",
                 "codePoint": "1F9B4",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e0-6-eyes",
@@ -5228,7 +5235,8 @@
                 "unicodeName": "E0.6 eyes",
                 "codePoint": "1F440",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e0-7-eye",
@@ -5236,7 +5244,8 @@
                 "unicodeName": "E0.7 eye",
                 "codePoint": "1F441 FE0F",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e0-6-tongue",
@@ -5244,7 +5253,8 @@
                 "unicodeName": "E0.6 tongue",
                 "codePoint": "1F445",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e0-6-mouth",
@@ -5252,7 +5262,8 @@
                 "unicodeName": "E0.6 mouth",
                 "codePoint": "1F444",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e14-0-biting-lip",
@@ -5260,7 +5271,8 @@
                 "unicodeName": "E14.0 biting lip",
                 "codePoint": "1FAE6",
                 "group": "people-body",
-                "subGroup": "body-parts"
+                "subGroup": "body-parts",
+                "hasSkin": false
             },
             {
                 "slug": "e0-6-baby",
@@ -21546,7 +21558,8 @@
                 "unicodeName": "E3.0 person fencing",
                 "codePoint": "1F93A",
                 "group": "people-body",
-                "subGroup": "person-sport"
+                "subGroup": "person-sport",
+                "hasSkin": false
             },
             {
                 "slug": "e1-0-horse-racing",
@@ -27701,7 +27714,8 @@
                 "unicodeName": "E0.7 speaking head",
                 "codePoint": "1F5E3 FE0F",
                 "group": "people-body",
-                "subGroup": "person-symbol"
+                "subGroup": "person-symbol",
+                "hasSkin": false
             },
             {
                 "slug": "e0-6-bust-in-silhouette",
@@ -27709,7 +27723,8 @@
                 "unicodeName": "E0.6 bust in silhouette",
                 "codePoint": "1F464",
                 "group": "people-body",
-                "subGroup": "person-symbol"
+                "subGroup": "person-symbol",
+                "hasSkin": false
             },
             {
                 "slug": "e1-0-busts-in-silhouette",
@@ -27717,7 +27732,8 @@
                 "unicodeName": "E1.0 busts in silhouette",
                 "codePoint": "1F465",
                 "group": "people-body",
-                "subGroup": "person-symbol"
+                "subGroup": "person-symbol",
+                "hasSkin": false
             },
             {
                 "slug": "e13-0-people-hugging",
@@ -27725,7 +27741,8 @@
                 "unicodeName": "E13.0 people hugging",
                 "codePoint": "1FAC2",
                 "group": "people-body",
-                "subGroup": "person-symbol"
+                "subGroup": "person-symbol",
+                "hasSkin": false
             },
             {
                 "slug": "e0-6-footprints",
@@ -27733,7 +27750,8 @@
                 "unicodeName": "E0.6 footprints",
                 "codePoint": "1F463",
                 "group": "people-body",
-                "subGroup": "person-symbol"
+                "subGroup": "person-symbol",
+                "hasSkin": false
             }
         ]
     },
@@ -30728,7 +30746,7 @@
                 "subGroup": "arts-crafts"
             }
         ]
-    }, 
+    },
     {
         "slug": "旅遊與地點",
         "slug-en": "travel-places",

@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen">
         <SiteHeader></SiteHeader>
-        <RouterView class="min-h-[calc(100vh-10.625rem)]"></RouterView>
+        <RouterView class="min-h-[calc(100vh-8.125rem)]"></RouterView>
         <SiteFooter></SiteFooter>
     </div>
 </template>

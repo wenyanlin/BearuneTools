@@ -2,7 +2,7 @@
     <div class="flex justify-center sm:px-4">
         <div class="w-innerWidth h-fit columns justify-center items-center py-8 sm:w-full">
             <div class="col-span-6 col-start-4 flex flex-col sm:col-span-8 sm:col-start-1 xs:col-span-4">
-                <h1>QR碼產生器（極簡版）</h1>
+                <h1>QR碼產生器</h1>
                 <div>目前正在開發中，未來將會增加更多客製內容。</div>
             </div>
             <div class="col-span-6 col-start-4 grid grid-cols-6 gap-6 relative
