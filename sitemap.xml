@@ -19,13 +19,17 @@
       <image:loc>https://bearune.com/assets/qrcode%20generator-DkvVHFOR.webp</image:loc>
       <image:caption>QR碼產生器工具qrcode-generator</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://bearune.com/assets/emoji-BbUD5b6L.webp</image:loc>
+      <image:caption>Emoji大全emoji</image:caption>
+    </image:image>
   </url>
   
   <!-- Convert Image to WebP -->
   <url>
     <loc>https://bearune.com/convert-image-to-webp</loc>
     <lastmod>2024-09-20</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
@@ -33,7 +37,7 @@
   <url>
     <loc>https://bearune.com/convert-image</loc>
     <lastmod>2024-09-20</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
@@ -41,8 +45,16 @@
   <url>
     <loc>https://bearune.com/qrcode-generator</loc>
     <lastmod>2024-09-20</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Emoji -->
+  <url>
+    <loc>https://bearune.com/emoji</loc>
+    <lastmod>2024-09-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <!-- 熊語清風 -->
