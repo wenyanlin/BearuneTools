@@ -50,4 +50,3 @@ jobs:
       - name: Set permissions
         run: |
           ssh root@172.233.65.93 'chown -R www-data:www-data /var/www/tool'
-
