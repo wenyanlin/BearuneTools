@@ -2,7 +2,7 @@ name: tool.bearune CICD
 
 on:
   push:
-    branches: [main]  # 當推送到 main 分支時觸發
+    branches: [develop]  # 當推送到 develop 分支時觸發
 
 jobs:
   deploy:
