@@ -10,7 +10,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         page1: resolve(__dirname, "index.html"),
-        page2: resolve(__dirname, "wenyan/index.html")
       }
     }
   },
