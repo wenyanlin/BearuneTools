@@ -3,7 +3,7 @@
         <div class="w-innerWidth columns justify-center items-center py-8 xl:px-4 sm:w-full">
             <div class="col-span-12 flex flex-col sm:col-span-8 xs:col-span-4">
                 <h1>Emoji大全</h1>
-                <div>點擊表情符號即可複製。目前共有<b>{{ total }}</b>種Emjio可以複製，並提供膚色及髮色切換。</div>
+                <div>點擊表情符號即可複製。目前共有<b>{{ total }}</b>種Emjio可以複製，並提供膚色切換。</div>
             </div>
             <div
                 class="col-span-12 grid grid-cols-12 gap-6 relative sm:col-span-8 sm:grid-cols-8 xs:col-span-4 xs:grid-cols-4">

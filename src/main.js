@@ -4,7 +4,9 @@ import App from './App.vue';
 import router from './router';
 import VueLazyload from 'vue-lazyload'
 import loadimage from '@/assets/background-light.webp';
+import { createMetaManager } from 'vue-meta';
 
+const metaManager = createMetaManager();
 const app = createApp(App)
 
 app.use(router);
@@ -14,6 +16,7 @@ app.use(VueLazyload, {
     loading: loadimage,
     attempt: 1
 });
+app.use(metaManager);
 app.mount('#app');
 
 

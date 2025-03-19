@@ -4,7 +4,7 @@
   <!-- 首頁 -->
   <url>
     <loc>https://bearune.com/</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -52,9 +52,17 @@
   <!-- Emoji -->
   <url>
     <loc>https://bearune.com/emoji</loc>
-    <lastmod>2024-09-29</lastmod>
+    <lastmod>2024-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- 隱私權宣告 -->
+  <url>
+    <loc>https://bearune.com/privacy-policy-statement</loc>
+    <lastmod>2024-09-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- 熊語清風 -->

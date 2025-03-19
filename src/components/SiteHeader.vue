@@ -12,12 +12,12 @@
                     <RouterLink v-for="link in links" :key="link.path" :to="link.path"
                         class="navigation_link no-style-a">{{ link.title }}</RouterLink>
                 </div>
-                <button @click="goToWenyan"
-                    class="border-primary text-primary hover:bg-shade1 hover:text-white">熊語清風</button>
+                <!-- <button @click="goToWenyan"
+                    class="border-primary text-primary hover:bg-shade1 hover:text-white">熊語清風</button> -->
                 <SwitchButton :default-checked="currentTheme == 'dark' ? true : false" :run-event="switchTheme">
                 </SwitchButton>
-                <a href="https://buymeacoffee.com/bearune" class="no-style-a hover:bg-transparent hover:brightness-75"
-                    target="_blank"><img src="/src/assets/bmc-button.svg" alt=""></a>
+                <!-- <a href="https://buymeacoffee.com/bearune" class="no-style-a hover:bg-transparent hover:brightness-75"
+                    target="_blank"><img src="/src/assets/bmc-button.svg" alt=""></a> -->
 
             </div>
             <div class="hidden justify-between items-center gap-8 lg:flex">
@@ -34,17 +34,17 @@
                             <RouterLink v-for="link in links" :key="link.path" :to="link.path"
                                 class="navigation_link border-b !rounded-none border-sliver !border-solid !py-4 no-style-a">
                                 {{ link.title }}</RouterLink>
-                            <button @click="goToWenyan"
-                                class="border-primary text-primary hover:bg-shade1 hover:text-white">熊語清風</button>
+                            <!-- <button @click="goToWenyan"
+                                class="border-primary text-primary hover:bg-shade1 hover:text-white">熊語清風</button> -->
                             <div class="flex justify-between items-center bg-greyBlue mt-4 p-4 rounded-lg">
                                 <span>外觀</span>
                                 <SwitchButton :default-checked="currentTheme == 'dark' ? true : false"
                                     :run-event="switchTheme">
                                 </SwitchButton>
                             </div>
-                            <a href="https://buymeacoffee.com/bearune"
+                            <!-- <a href="https://buymeacoffee.com/bearune"
                                 class="no-style-a hover:bg-transparent hover:brightness-75 w-full mt-4"
-                                target="_blank"><img src="/src/assets/bmc-button.svg" alt=""></a>
+                                target="_blank"><img src="/src/assets/bmc-button.svg" alt=""></a> -->
                         </div>
                     </div>
                 </Transition>
